@@ -609,6 +609,6 @@ linux_docker)
 	linux_docker
 	;;
 *)
-	echo "Usage: bash docker.sh linux_docker"
+	echo "Usage: bash fun_docker.sh linux_docker"
 	;;
 esac
