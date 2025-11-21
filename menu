@@ -46,7 +46,7 @@ Mennu_Actions=(
 	"bash <(curl -sL tool.hdyauto.qzz.io/format-envs?$Rand_Str)"
 	"bash <(curl -sL tool.hdyauto.qzz.io/format-yml?$Rand_Str)"
 	"bash <(curl -sL tool.hdyauto.qzz.io/format-shfmt?$Rand_Str)"
-	"bash <(curl -sL tool.hdyauto.qzz.io/clean-ds_store?$Rand_Str)"
+	"bash <(curl -sL tool.hdyauto.qzz.io/clean-dsstore?$Rand_Str)"
 	"bash <(curl -sL tool.hdyauto.qzz.io/deal-four?$Rand_Str)"
 	"bash <(curl -sL tool.hdyauto.qzz.io/fun_docker.sh?$Rand_Str) linux_docker"
 	"bash <(curl -sL tool.hdyauto.qzz.io/fun_deps.sh?$Rand_Str) fundeps_check_install_deps"

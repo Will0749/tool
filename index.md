@@ -30,8 +30,8 @@
 ## 清理 DS_Store
 
 <div style="display:flex;align-items:center;gap:10px;">
-  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/clean-ds_store)</code>
-  <button onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/clean-ds_store)')">
+  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/clean-dsstore)</code>
+  <button onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/clean-dsstore)')">
     复制
   </button>
 </div>
