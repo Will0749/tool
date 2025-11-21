@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # 输出函数
 fungit_echo_content() {
 	ECHO_TYPE="echo -e"

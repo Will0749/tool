@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "=== CPU 信息 ===" && lscpu | grep 'Model name'
 echo
 echo "=== 内存使用 ===" && free -h
