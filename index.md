@@ -75,7 +75,7 @@
 ## menu
 
 <div style="display:flex;align-items:center;gap:10px;">
-  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/menu) linux_docker</code>
+  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/menu)</code>
   <button onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/menu)')">
     复制
   </button>

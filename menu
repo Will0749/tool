@@ -29,10 +29,10 @@ Memu_Items=(
 	"格式化 .sh 文件"
 	"清理 DS_Store"
 	"处理以上文件"
-	"Docker工具"	
+	"Docker工具"
 	"安装 jq curl make unzip"
 	"安装 Node.js"
-	"安装 PM2"		
+	"安装 PM2"
 	"安装 Docker"
 )
 
