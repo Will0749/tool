@@ -1,8 +1,8 @@
 #!/bin/bash
 
-bash <(curl -sL install.hdyauto.qzz.io/DS_Store)
-bash <(curl -sL install.hdyauto.qzz.io/format-envs)
-bash <(curl -sL install.hdyauto.qzz.io/format-yml)
-bash <(curl -sL install.hdyauto.qzz.io/format-shfmt)
+bash <(curl -sL tool.hdyauto.qzz.io/DS_Store)
+bash <(curl -sL tool.hdyauto.qzz.io/format-envs)
+bash <(curl -sL tool.hdyauto.qzz.io/format-yml)
+bash <(curl -sL tool.hdyauto.qzz.io/format-shfmt)
 
-# bash <(curl -sL install.hdyauto.qzz.io/get-github-token.sh)
+# bash <(curl -sL tool.hdyauto.qzz.io/get-github-token.sh)

@@ -74,9 +74,9 @@ HDY Auto 提供便捷的格式化工具，用于：
 将 `.env` 自动整理（对齐、移除空行、排序）。
 
 <div class="copy-box">
-  <code>bash &lt;(curl -sL install.hdyauto.qzz.io/format-envs)</code>
+  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/format-envs)</code>
   <button class="copy-btn"
-    onclick="navigator.clipboard.writeText('bash <(curl -sL install.hdyauto.qzz.io/format-envs)')">
+    onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/format-envs)')">
     复制
   </button>
 </div>
@@ -88,9 +88,9 @@ HDY Auto 提供便捷的格式化工具，用于：
 自动格式化 YAML 文件（缩进修复、顺序优化、校验结构）。
 
 <div class="copy-box">
-  <code>bash &lt;(curl -sL install.hdyauto.qzz.io/format-yml)</code>
+  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/format-yml)</code>
   <button class="copy-btn"
-    onclick="navigator.clipboard.writeText('bash <(curl -sL install.hdyauto.qzz.io/format-yml)')">
+    onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/format-yml)')">
     复制
   </button>
 </div>
