@@ -1,0 +1,95 @@
+#!/bin/bash
+
+###################################################
+
+echo_content() {
+	local tmp_color="$1" # 颜色
+	local tmp_text="$2"  #  文本
+	local tmp_opt="$3"   # 第三个参数用于传 -n
+
+	local tmp_echo_type="echo -e"
+	[ "$tmp_opt" = "-n" ] && tmp_echo_type="echo -en"
+
+	case "$tmp_color" in
+	"red") $tmp_echo_type "\033[31m${tmp_text}\033[0m" ;;
+	"green") $tmp_echo_type "\033[32m${tmp_text}\033[0m" ;;
+	"yellow") $tmp_echo_type "\033[33m${tmp_text}\033[0m" ;;
+	"blue") $tmp_echo_type "\033[34m${tmp_text}\033[0m" ;;
+	"purple") $tmp_echo_type "\033[35m${tmp_text}\033[0m" ;;
+	"skyBlue") $tmp_echo_type "\033[36m${tmp_text}\033[0m" ;;
+	"white") $tmp_echo_type "\033[37m${tmp_text}\033[0m" ;;
+	esac
+}
+
+# ------------------ 数组定义菜单项 ------------------
+Memu_Items=(
+	"退出"
+	"格式化 .env 文件"
+	"格式化 .yml 文件"
+	"格式化 .sh 文件"
+	"清理 DS_Store"
+	"处理以上文件"
+	"Docker工具"	
+	"安装 jq curl make unzip"
+	"安装 Node.js"
+	"安装 PM2"		
+	"安装 Docker"
+)
+
+Rand_Str=$(openssl rand -base64 12 | tr -dc 'a-zA-Z0-9' | cut -c1-16)
+
+# 每个编号对应一个函数（index 对齐 MENU_ITEMS）
+Mennu_Actions=(
+	"exit 0"
+	"bash <(curl -sL tool.hdyauto.qzz.io/format-envs?$Rand_Str)"
+	"bash <(curl -sL tool.hdyauto.qzz.io/format-yml?$Rand_Str)"
+	"bash <(curl -sL tool.hdyauto.qzz.io/format-shfmt?$Rand_Str)"
+	"bash <(curl -sL tool.hdyauto.qzz.io/clean-ds_store?$Rand_Str)"
+	"bash <(curl -sL tool.hdyauto.qzz.io/deal-four?$Rand_Str)"
+	"bash <(curl -sL tool.hdyauto.qzz.io/fun_docker.sh?$Rand_Str) linux_docker"
+	"bash <(curl -sL tool.hdyauto.qzz.io/fun_deps.sh?$Rand_Str) fundeps_check_install_deps"
+	"bash <(curl -sL tool.hdyauto.qzz.io/fun_deps.sh?$Rand_Str) fundeps_check_install_nodejs"
+	"bash <(curl -sL tool.hdyauto.qzz.io/fun_deps.sh?$Rand_Str) fundeps_check_install_pm2"
+	"bash <(curl -sL tool.hdyauto.qzz.io/fun_deps.sh?$Rand_Str) fundeps_check_install_docker"
+)
+
+main() {
+
+	# ------------------ 主循环 ------------------
+	while true; do
+		clear
+		echo_content "skyBlue" "============================"
+		echo_content "red" " 安装菜单 "
+		echo_content "skyBlue" "============================"
+		for i in "${!Memu_Items[@]}"; do
+			((i == 0)) && continue
+			echo_content "white" " $((i))) " -n
+			echo_content "green" "${Memu_Items[$i]}"
+		done
+		echo ""
+		echo_content "white" " 0) " -n
+		echo_content "green" "${Memu_Items[0]}"
+		echo_content "skyBlue" "============================"
+		echo_content "skyBlue" "请选择操作: " -n
+		read -r choice
+
+		# 转为下标（减 1）
+		if [[ "$choice" =~ ^[0-9]+$ ]] && [ "$choice" -ge 0 ] && [ "$choice" -le "${#Memu_Items[@]}" ]; then
+			index=$((choice))
+			echo_content "skyBlue" ">> 执行: ${Memu_Items[$index]}"
+			eval "${Mennu_Actions[$index]}"
+		else
+			echo_content "skyBlue" "无效选择。"
+		fi
+
+		echo_content "yellow" "按任意键继续..." -n
+		read -n 1 -s -r
+		echo # 输入后换行（可选）
+	done
+}
+
+# ======= 安装默认工具 =======
+check_install_deps
+
+# ======= 启动程序 =======
+main

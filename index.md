@@ -30,8 +30,8 @@
 ## 清理 DS_Store
 
 <div style="display:flex;align-items:center;gap:10px;">
-  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/clean-DS_Store)</code>
-  <button onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/clean-DS_Store)')">
+  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/clean-ds_store)</code>
+  <button onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/clean-ds_store)')">
     复制
   </button>
 </div>
@@ -39,8 +39,8 @@
 ## 处理 all
 
 <div style="display:flex;align-items:center;gap:10px;">
-  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/clean-all)</code>
-  <button onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/clean-all)')">
+  <code>bash &lt;(curl -sL tool.hdyauto.qzz.io/deal-four)</code>
+  <button onclick="navigator.clipboard.writeText('bash <(curl -sL tool.hdyauto.qzz.io/deal-four)')">
     复制
   </button>
 </div>
