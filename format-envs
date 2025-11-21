@@ -1,0 +1,32 @@
+#!/bin/bash
+# 遍历当前目录及子目录，格式化所有 *.env 文件（原地覆盖）
+
+find . -type f -name "*.env" | while read -r file; do
+	echo "📂 格式化: $file"
+
+	tmpfile=$(mktemp)
+	tmpfile2=$(mktemp)
+
+	# 计算 KEY 的最大长度
+	max_len=$(grep -vE '^\s*#|^\s*$' "$file" | cut -d= -f1 | awk '{print length}' | sort -nr | head -1)
+
+	# 格式化
+	while IFS= read -r line; do
+		if [[ "$line" =~ ^[[:space:]]*# || -z "$line" ]]; then
+			echo "$line" >>"$tmpfile"
+		else
+			# 去除左右空格，并严格分割 key/value
+			key=$(echo "$line" | sed -E 's/^[[:space:]]*([^=[:space:]]+)[[:space:]]*=.*$/\1/')
+			value=$(echo "$line" | sed -E 's/^[^=]*=[[:space:]]*(.*)$/\1/')
+			echo "${key}=${value}" >>"$tmpfile"
+		fi
+	done <"$file"
+
+	# ✅ 移除多余空行：连续空行 → 只保留一个
+	awk 'NF{blank=0} !NF{if(blank) next; blank=1}1' "$tmpfile" >"$tmpfile2"
+
+	mv "$tmpfile2" "$file"
+	rm -f "$tmpfile"
+done
+
+echo "✅ 所有 *.env 文件格式化完成（空行已压缩）！"

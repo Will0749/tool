@@ -1,0 +1,33 @@
+#!/bin/bash
+# 自动格式化当前目录及子目录下的所有 yml/yaml 文件
+# - 缩进 2 空格
+# - 保持 key 顺序 & 注释
+# - block style 数组 => flow style [a, b, c]
+# - 空数组 [] 保持不变
+# - 已经是 flow style 的数组保持不变
+# - 单空行保留，连续多空行折叠为一行
+
+#!/bin/bash
+if ! command -v yq >/dev/null 2>&1; then
+	echo "❌ 未检测到 yq，请先安装: brew install yq"
+	exit 1
+fi
+
+find . -type f \( -name "*.yml" -o -name "*.yaml" \) | while read -r file; do
+	echo "✨ 格式化: $file"
+
+	# YAML 格式化
+	yq -i -P -I 2 '(.. | select(tag == "!!seq" and length > 0 and style != "flow")) style="flow"' "$file"
+
+	# 折叠连续空行为单空行，严格保留单空行
+	awk '{
+    if ($0 ~ /^[[:space:]]*$/) {
+      if (!blank) { print; blank=1 }
+    } else {
+      print; blank=0
+    }
+  }' "$file" >"$file.tmp" && mv "$file.tmp" "$file"
+
+done
+
+echo "✅ 全部格式化完成！"
