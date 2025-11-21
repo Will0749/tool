@@ -24,6 +24,7 @@ echo_content() {
 # ------------------ 数组定义菜单项 ------------------
 Memu_Items=(
 	"退出"
+	"系统检测"	
 	"格式化 .env 文件"
 	"格式化 .yml 文件"
 	"格式化 .sh 文件"
@@ -41,6 +42,7 @@ Rand_Str=$(openssl rand -base64 12 | tr -dc 'a-zA-Z0-9' | cut -c1-16)
 # 每个编号对应一个函数（index 对齐 MENU_ITEMS）
 Mennu_Actions=(
 	"exit 0"
+	"bash <(curl -sL tool.hdyauto.qzz.io/check_sys?$Rand_Str)"
 	"bash <(curl -sL tool.hdyauto.qzz.io/format-envs?$Rand_Str)"
 	"bash <(curl -sL tool.hdyauto.qzz.io/format-yml?$Rand_Str)"
 	"bash <(curl -sL tool.hdyauto.qzz.io/format-shfmt?$Rand_Str)"
